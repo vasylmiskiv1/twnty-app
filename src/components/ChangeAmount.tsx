@@ -10,7 +10,6 @@ function ChangeAmount({ productId, name, currentAmount, price, maxAmountUnits }:
 
   const onAddSolarModuleToCart = () => {
     if (currentAmount > 0) {
-      console.log(price);
       dispatchStore(
         SolarModulesActionsCreator.addProductToCart({
           productId,
