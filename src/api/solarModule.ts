@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { randomPrice } from '../helper/randomPrice';
 
 const request = async (
   endPoint: string = "",
@@ -14,7 +15,7 @@ const request = async (
       const solarModuleObject: StoreItem = {
         productId: uuidv4(),
         name: solarModule,
-        price: 10,
+        price: randomPrice(900, 3000),
         maxAmountUnits: data[solarModule],
         currentAmount: data[solarModule],
       };

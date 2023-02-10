@@ -4,6 +4,7 @@ import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
 import { dispatchStore } from "../redux/store";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiDollar } from "react-icons/bi";
+import { FaSun } from "react-icons/fa";
 
 import SolarModuleItem from "../components/StoreItem";
 import loader from "../assets/loader.gif";
@@ -22,7 +23,13 @@ function SolarModuleStore() {
   return (
     <>
       <div className="flex justify-around items-center bg-green-200 p-4">
-        <h1 className="text-3xl font-semibold">Solar Modules</h1>
+        <div className="flex items-center gap-5">
+          <div>
+            <FaSun size={28} />
+          </div>
+          <h1 className="text-3xl font-semibold">Solar Modules</h1>
+        </div>
+
         <div className="flex items-center gap-10">
           <Link
             to="/cart"
@@ -45,7 +52,7 @@ function SolarModuleStore() {
           </div>
         )}
         <div className="mt-10 grid grid-cols-4 gap-10">
-          {solarModuleStore.length
+          {solarModuleStore && solarModuleStore.length
             ? solarModuleStore.map((solarModule: StoreItem) => (
                 <SolarModuleItem
                   key={solarModule.productId}

@@ -28,13 +28,21 @@ interface initialState {
   cartCounter: number;
   cartTotalPrice: number;
   isLoading: boolean;
-  error: "";
+  error: string;
 }
 
 type SolarModuleCardProps = {
   name: string;
   productId: string;
-  price,
+  price;
   maxAmountUnits: number;
   amount: number;
+};
+
+type ChangeAmountProps = {
+  productId: string;
+  name: string;
+  currentAmount: number;
+  price: number;
+  maxAmountUnits: number;
 };

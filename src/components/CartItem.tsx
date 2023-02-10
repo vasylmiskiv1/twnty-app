@@ -1,40 +1,37 @@
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import ChangeAmount from "./ChangeAmount";
 
-function CartItem({ productId, name, price, votedAmount, maxAmountUnits }: any) {
-  const { solarModuleStore, isLoading, error } = useSelector(
-    (state: initialState) => state
-  );
+function CartItem({
+  productId,
+  name,
+  price,
+  votedAmount,
+  maxAmountUnits,
+}: any) {
+  const { solarModuleStore } = useSelector((state: initialState) => state);
 
   const currentAmount =
     solarModuleStore.find((product) => product.productId === productId)
       ?.currentAmount || 0;
 
+  const totalSum = useMemo(() => votedAmount * price, [votedAmount]);
+
   return (
-    <div key={productId} className="p-5 border border-slate-400 rounded-lg">
-      <div>
-        Name: <span className="font-semibold">{name}</span>
-      </div>
-      <div className="mt-5 flex gap-4">
-        <div>
-          Voted amount: <span className="font-semibold">{votedAmount}</span>
-        </div>
-        |
-        <div>
-          Available: <span className="font-semibold">{currentAmount}</span>
-        </div>
-        <div className="mt-10">
-          <ChangeAmount
-            productId={productId}
-            name={name}
-            price={price}
-            votedAmount={votedAmount}
-            currentAmount={currentAmount}
-            maxAmountUnits={maxAmountUnits}
-          />
-        </div>
-      </div>
-    </div>
+    <tr className="text-gray-700">
+      <td className="border px-6 py-2">{name}</td>
+      <td className="border py-2">
+        <ChangeAmount
+          productId={productId}
+          name={name}
+          price={price}
+          currentAmount={currentAmount}
+          maxAmountUnits={maxAmountUnits}
+        />
+      </td>
+      <td className="border px-4 py-2">${price}</td>
+      <td className="border px-4 py-2">${totalSum}</td>
+    </tr>
   );
 }
 

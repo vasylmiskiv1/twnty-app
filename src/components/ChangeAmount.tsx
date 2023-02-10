@@ -1,11 +1,16 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
 import { dispatchStore } from "../redux/store";
 
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 
-function ChangeAmount({ productId, name, currentAmount, price, maxAmountUnits }: any) {
+function ChangeAmount({
+  productId,
+  name,
+  currentAmount,
+  price,
+  maxAmountUnits,
+}: ChangeAmountProps) {
   const { solarModuleCart } = useSelector((state: initialState) => state);
 
   const onAddSolarModuleToCart = () => {
@@ -19,7 +24,7 @@ function ChangeAmount({ productId, name, currentAmount, price, maxAmountUnits }:
           votedAmount: currentAmount,
         })
       );
-    } 
+    }
   };
 
   const onRemoveSolarModuleFromCart = () => {
@@ -35,9 +40,9 @@ function ChangeAmount({ productId, name, currentAmount, price, maxAmountUnits }:
       );
     }
   };
-  
+
   return (
-    <div className="mt-5 flex gap-4">
+    <div className="flex justify-center gap-4">
       <button>
         <AiFillPlusCircle
           size={25}
@@ -45,7 +50,7 @@ function ChangeAmount({ productId, name, currentAmount, price, maxAmountUnits }:
           onClick={onAddSolarModuleToCart}
         />
       </button>
-      <div>
+      <div className="w-4">
         {solarModuleCart.find((product) => product.productId === productId)
           ?.votedAmount || 0}
       </div>
