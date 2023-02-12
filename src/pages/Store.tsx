@@ -11,7 +11,7 @@ import loader from "../assets/loader.gif";
 import { Link } from "react-router-dom";
 
 function SolarModuleStore() {
-  const { solarModuleStore, cartCounter, cartTotalPrice, isLoading, error } =
+  const { solarModuleStore, cartCounter, cartTotalPrice, isLoading } =
     useSelector((state: initialState) => state);
 
   useEffect(() => {
@@ -21,8 +21,8 @@ function SolarModuleStore() {
   }, []);
 
   return (
-    <>
-      <div className="flex justify-around items-center bg-green-200 p-4">
+    <div className="relative h-screen flex flex-col items-stretch">
+      <div className="flex shadow-md justify-around items-center bg-green-200 p-4">
         <div className="flex items-center gap-5">
           <div>
             <FaSun size={28} />
@@ -45,13 +45,13 @@ function SolarModuleStore() {
           </div>
         </div>
       </div>
-      <div className="px-40">
+      <div className="py-20 xl:w-[1260px] m-auto">
         {isLoading && (
-          <div className="mt-60 flex justify-center">
-            <img src={loader} alt="loader" className="h-20" />
+          <div className="absolute top-[40%] left-[50%] translate-x-[-50%] z-100">
+            <img src={loader} alt="loader" />
           </div>
         )}
-        <div className="mt-10 grid grid-cols-4 gap-10">
+        <div className="store-grid-container">
           {solarModuleStore && solarModuleStore.length
             ? solarModuleStore.map((solarModule: StoreItem) => (
                 <SolarModuleItem
@@ -66,7 +66,10 @@ function SolarModuleStore() {
             : null}
         </div>
       </div>
-    </>
+      <div className="flex-0 bg-green-200 py-5 text-center">
+        SolarModulesStore
+      </div>
+    </div>
   );
 }
 

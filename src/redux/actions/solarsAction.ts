@@ -24,11 +24,13 @@ export const SolarModulesActionsCreator = {
   },
 
   getSolarModulesRequest: () => ({ type: GET_SOLAR_MODULES_REQUEST }),
+
   getSolarModulesSuccess: (solarModules: StoreItem[] | undefined) => ({
     type: GET_SOLAR_MODULES_SUCCESS,
     payload: solarModules,
   }),
-  getSolarModulesFailed: (error: any) => ({
+
+  getSolarModulesFailed: (error: Error | unknown) => ({
     type: GET_SOLAR_MODULES_FAILED,
     payload: error,
   }),

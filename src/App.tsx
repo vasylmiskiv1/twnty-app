@@ -5,8 +5,8 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import SolarModuleStore from "./pages/SolarModuleStore";
-import SolarModuleCart from "./pages/SolarModuleCart";
+import SolarModuleStore from "./pages/Store";
+import SolarModuleCart from "./pages/ShoppingCart";
 
 import "./App.css";
 

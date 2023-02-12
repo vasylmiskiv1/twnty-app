@@ -15,7 +15,10 @@ const initialState: initialState = {
   error: "",
 };
 
-export default function postsReducer(state = initialState, action: any) {
+export default function postsReducer(
+  state = initialState,
+  action: ActionReducer
+) {
   switch (action.type) {
     case GET_SOLAR_MODULES_REQUEST:
       return {

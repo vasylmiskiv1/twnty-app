@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
 
 function SolarModuleCart() {
-  const {
-    solarModuleCart,
-    cartCounter,
-    cartTotalPrice,
-  } = useSelector((state: initialState) => state);
+  const { solarModuleCart, cartCounter, cartTotalPrice } = useSelector(
+    (state: initialState) => state
+  );
 
   const navigate = useNavigate();
 
@@ -17,7 +15,7 @@ function SolarModuleCart() {
 
   return (
     <div className="flex">
-      <div className="w-4/6 h-screen px-24 pt-40">
+      <div className="w-4/6 h-screen px-24 pt-10">
         <button
           className="px-5 py-2 bg-gray-200 rounded transition hover:bg-gray-400 duration-200"
           onClick={onGoBack}
@@ -65,7 +63,9 @@ function SolarModuleCart() {
           <div>Total cost:</div>
           <div>${cartTotalPrice}</div>
         </div>
-        <button className="mt-10 bg-green-400 w-full py-2 rounded transition hover:bg-green-500 duration-200">Check out</button>
+        <button className="mt-10 bg-green-400 w-full py-2 rounded transition hover:bg-green-500 duration-200">
+          Check out
+        </button>
       </div>
     </div>
   );

@@ -1,3 +1,8 @@
+interface ActionReducer {
+  type: string;
+  payload?: any;
+}
+
 interface Params {
   method: string;
   headers?: {
@@ -46,3 +51,11 @@ type ChangeAmountProps = {
   price: number;
   maxAmountUnits: number;
 };
+
+type CartItemProps = {
+  productId: string;
+  name: string;
+  price: number;
+  votedAmount: number;
+  maxAmountUnits: number;
+}

@@ -8,7 +8,7 @@ function CartItem({
   price,
   votedAmount,
   maxAmountUnits,
-}: any) {
+}: CartItemProps) {
   const { solarModuleStore } = useSelector((state: initialState) => state);
 
   const currentAmount =
