@@ -8,7 +8,7 @@ function SolarModuleCard({
   maxAmountUnits,
 }: SolarModuleCardProps) {
   return (
-    <div className="p-10 h-60 flex shadow-lg justify-between border border-slate-400 rounded-lg transition hover:scale-105 duration-200 hover:bg-gray-100">
+    <div className="p-10 h-60 w-[360px] md:w-[320px] xl:w-[450px] flex shadow-lg justify-between border border-slate-400 rounded-lg transition hover:scale-105 duration-200 hover:bg-gray-100">
       <div className="text-2xl">{name}</div>
       <div className="flex flex-col justify-between">
         <div className="text-center">Available: {amount}</div>

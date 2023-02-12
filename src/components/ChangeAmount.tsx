@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
-import { dispatchStore } from "../redux/store";
 
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+
+import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
+import { dispatchStore } from "../redux/store";
 
 function ChangeAmount({
   productId,

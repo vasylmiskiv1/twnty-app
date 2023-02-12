@@ -4,6 +4,7 @@ import {
   GET_SOLAR_MODULES_FAILED,
   ADD_SOLAR_MODULE_TO_CART,
   REMOVE_SOLAR_MODULE_FROM_CART,
+  CLEAR_ALL_DATA,
 } from "../actions/types";
 
 const initialState: initialState = {
@@ -94,6 +95,16 @@ export default function postsReducer(
               : product
           )
           .filter((product) => product.votedAmount),
+      };
+
+    case CLEAR_ALL_DATA:
+      return {
+        solarModuleStore: [],
+        solarModuleCart: [],
+        cartCounter: 0,
+        cartTotalPrice: 0,
+        isLoading: false,
+        error: "",
       };
 
     default:

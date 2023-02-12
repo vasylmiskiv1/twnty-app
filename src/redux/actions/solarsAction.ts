@@ -3,7 +3,8 @@ import {
   GET_SOLAR_MODULES_SUCCESS,
   GET_SOLAR_MODULES_FAILED,
   ADD_SOLAR_MODULE_TO_CART,
-  REMOVE_SOLAR_MODULE_FROM_CART
+  REMOVE_SOLAR_MODULE_FROM_CART,
+  CLEAR_ALL_DATA,
 } from "./types";
 
 import { Dispatch } from "redux";
@@ -39,9 +40,13 @@ export const SolarModulesActionsCreator = {
     type: ADD_SOLAR_MODULE_TO_CART,
     payload: productToAdd,
   }),
-  
+
   removeProductFromCart: (productToRemove: CartItem) => ({
-     type: REMOVE_SOLAR_MODULE_FROM_CART,
-     payload: productToRemove,
-    })
+    type: REMOVE_SOLAR_MODULE_FROM_CART,
+    payload: productToRemove,
+  }),
+
+  clearAllData: () => ({
+    type: CLEAR_ALL_DATA,
+  }),
 };

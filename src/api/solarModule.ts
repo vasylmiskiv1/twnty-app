@@ -15,7 +15,7 @@ const request = async (
       const solarModuleObject: StoreItem = {
         productId: uuidv4(),
         name: solarModule,
-        price: randomPrice(900, 3000),
+        price: randomPrice(800, 3000),
         maxAmountUnits: data[solarModule],
         currentAmount: data[solarModule],
       };
@@ -24,7 +24,7 @@ const request = async (
     }
 
     if (!response.ok) {
-      throw new Error(`Error with request with status ${response.status}`);
+      throw new Error(`Error with status ${response.status}`);
     }
 
     return solarModules;

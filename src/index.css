@@ -5,10 +5,3 @@
 body {
   margin: 0;
 }
-
-.store-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 405px);
-  justify-content: space-between;
-  grid-gap: 20px;
-}

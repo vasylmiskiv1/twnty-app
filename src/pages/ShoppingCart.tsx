@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { dispatchStore, persistor } from "../redux/store";
+import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
+
 import CartItem from "../components/CartItem";
 
 function SolarModuleCart() {
@@ -10,6 +14,16 @@ function SolarModuleCart() {
   const navigate = useNavigate();
 
   const onGoBack = () => {
+    navigate("/store");
+  };
+
+  const onCartSubmit = () => {
+    /* Send this cart data */
+    /* If server returns status ok clear state 
+      and go to the store page and get updated data 
+      from the server */
+    persistor.purge();
+    dispatchStore(SolarModulesActionsCreator.clearAllData());
     navigate("/store");
   };
 
@@ -63,7 +77,12 @@ function SolarModuleCart() {
           <div>Total cost:</div>
           <div>${cartTotalPrice}</div>
         </div>
-        <button className="mt-10 bg-green-400 w-full py-2 rounded transition hover:bg-green-500 duration-200">
+        <button
+          type="button"
+          className={`mt-10 w-full py-2 rounded ${!solarModuleCart.length ? `bg-gray-400 cursor-not-allowed` : `shadow-md bg-green-400 transition hover:bg-green-500 hover:shadow-lg duration-200`}`}
+          onClick={onCartSubmit}
+          disabled={!solarModuleCart.length}
+        >
           Check out
         </button>
       </div>

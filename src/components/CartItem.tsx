@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+
 import ChangeAmount from "./ChangeAmount";
 
 function CartItem({
@@ -18,7 +19,7 @@ function CartItem({
   const totalSum = useMemo(() => votedAmount * price, [votedAmount]);
 
   return (
-    <tr className="text-gray-700">
+    <tr className="text-gray-700 transition hover:bg-gray-200 duration-200">
       <td className="border px-6 py-2">{name}</td>
       <td className="border py-2">
         <ChangeAmount
