@@ -62,6 +62,7 @@ export default function postsReducer(
           ],
         };
       }
+      
       return {
         ...state,
         cartCounter: state.cartCounter + 1,

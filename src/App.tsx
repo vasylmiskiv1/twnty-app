@@ -8,8 +8,6 @@ import {
 import SolarModuleStore from "./pages/Store";
 import SolarModuleCart from "./pages/ShoppingCart";
 
-import "./App.css";
-
 function App() {
   return (
     <Router>

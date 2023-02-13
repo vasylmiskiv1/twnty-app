@@ -4,6 +4,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 
 import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
 import { dispatchStore } from "../redux/store";
+import { useMemo } from "react";
 
 function ChangeAmount({
   productId,
@@ -12,7 +13,7 @@ function ChangeAmount({
   price,
   maxAmountUnits,
 }: ChangeAmountProps) {
-  const { solarModuleCart } = useSelector((state: initialState) => state);
+  const votedAmount = useMemo(() => maxAmountUnits - currentAmount, [currentAmount])
 
   const onAddSolarModuleToCart = () => {
     if (currentAmount > 0) {
@@ -52,8 +53,7 @@ function ChangeAmount({
         />
       </button>
       <div className="w-4">
-        {solarModuleCart.find((product) => product.productId === productId)
-          ?.votedAmount || 0}
+        {votedAmount}
       </div>
       <button>
         <AiFillMinusCircle

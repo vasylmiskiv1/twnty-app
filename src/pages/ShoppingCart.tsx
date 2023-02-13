@@ -40,29 +40,36 @@ function SolarModuleCart() {
           Your orders:
         </div>
         <table className="mt-5 w-full overflow-y-scroll max-h-[300px]">
-          <thead className="bg-green-300">
+          <thead className="bg-green-200">
             <tr className="text-slate">
-              <th className="px-4 py-2">Product Details</th>
-              <th className="px-4 py-2">Quantity</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Total</th>
+              <th className="py-2">Product Details</th>
+              <th className="py-2">Available</th>
+              <th className="py-2">Quantity</th>
+              <th className="py-2">Price</th>
+              <th className="py-2">Total</th>
             </tr>
           </thead>
           <tbody className="bg-gray-100">
-            {solarModuleCart.map((solarModule) => (
-              <CartItem
-                key={solarModule.productId}
-                productId={solarModule.productId}
-                name={solarModule.name}
-                price={solarModule.price}
-                votedAmount={solarModule.votedAmount}
-                maxAmountUnits={solarModule.maxAmountUnits}
-              />
-            ))}
+            {solarModuleCart.length
+              ? solarModuleCart.map((solarModule) => (
+                  <CartItem
+                    key={solarModule.productId}
+                    productId={solarModule.productId}
+                    name={solarModule.name}
+                    price={solarModule.price}
+                    votedAmount={solarModule.votedAmount}
+                    maxAmountUnits={solarModule.maxAmountUnits}
+                  />
+                ))
+              : null}
           </tbody>
         </table>
+        {!solarModuleCart.length && (
+          <div className="mt-5 text-center text-lg">
+            Your order list is empty
+          </div>
+        )}
       </div>
-
       <div className="w-2/6 bg-gray-200 p-20">
         <div className=" font-bold uppercase text-xl text-center">
           Order Summary
@@ -79,7 +86,12 @@ function SolarModuleCart() {
         </div>
         <button
           type="button"
-          className={`mt-10 w-full py-2 rounded ${!solarModuleCart.length ? `bg-gray-400 cursor-not-allowed` : `shadow-md bg-green-400 transition hover:bg-green-500 hover:shadow-lg duration-200`}`}
+          className={`mt-10 w-full py-2 rounded ${
+            !solarModuleCart.length
+              ? `bg-gray-400 cursor-not-allowed`
+              : `shadow-md bg-green-400 transition
+             hover:bg-green-500 hover:shadow-lg duration-200`
+          }`}
           onClick={onCartSubmit}
           disabled={!solarModuleCart.length}
         >

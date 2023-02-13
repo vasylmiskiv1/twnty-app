@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiDollar } from "react-icons/bi";
-import { FaSun } from "react-icons/fa";
 
 import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
 import { dispatchStore } from "../redux/store";
@@ -33,7 +32,6 @@ function SolarModuleStore() {
               Solar Modules
             </div>
           </div>
-
           <div className="flex items-center gap-10">
             <Link
               to="/cart"

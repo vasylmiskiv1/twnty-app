@@ -36,20 +36,20 @@ interface initialState {
   error: string;
 }
 
-type SolarModuleCardProps = {
-  name: string;
-  productId: string;
-  price;
-  maxAmountUnits: number;
-  amount: number;
-};
-
 type ChangeAmountProps = {
   productId: string;
   name: string;
   currentAmount: number;
   price: number;
   maxAmountUnits: number;
+};
+
+type StoreItemProps = {
+  name: string;
+  productId: string;
+  price;
+  maxAmountUnits: number;
+  amount: number;
 };
 
 type CartItemProps = {
