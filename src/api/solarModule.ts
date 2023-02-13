@@ -15,9 +15,9 @@ const request = async (
       const solarModuleObject: StoreItem = {
         productId: uuidv4(),
         name: solarModule,
-        price: randomPrice(800, 3000),
-        maxAmountUnits: data[solarModule],
-        currentAmount: data[solarModule],
+        price: data[solarModule].price,
+        maxAmountUnits: data[solarModule].quantity,
+        currentAmount: data[solarModule].quantity,
       };
 
       solarModules.push(solarModuleObject);
