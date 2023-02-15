@@ -20,7 +20,7 @@ function SolarModuleStore() {
     if (!solarModuleStore.length) {
       dispatchStore(SolarModulesActionsCreator.fetchSolarModules());
     }
-  }, []);
+  }, [solarModuleStore.length]);
 
   return (
     <div className="relative h-screen flex flex-col items-stretch">
@@ -62,8 +62,8 @@ function SolarModuleStore() {
                   productId={solarModule.productId}
                   price={solarModule.price}
                   name={solarModule.name}
-                  maxAmountUnits={solarModule.maxAmountUnits}
-                  amount={solarModule.currentAmount}
+                  maxAmount={solarModule.maxAmount}
+                  available={solarModule.available}
                 />
               ))
             : null}

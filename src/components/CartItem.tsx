@@ -6,13 +6,18 @@ function CartItem({
   productId,
   name,
   price,
-  votedAmount,
-  maxAmountUnits,
+  voted,
+  maxAmount,
 }: CartItemProps) {
-  const totalSum = useMemo(() => votedAmount * price, [votedAmount]);
+  const totalSum = useMemo(
+    () => voted * price,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [voted]
+  );
   const availableModules = useMemo(
-    () => maxAmountUnits - votedAmount,
-    [votedAmount]
+    () => maxAmount - voted,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [voted]
   );
 
   return (
@@ -24,8 +29,8 @@ function CartItem({
           productId={productId}
           name={name}
           price={price}
-          currentAmount={availableModules}
-          maxAmountUnits={maxAmountUnits}
+          available={availableModules}
+          maxAmount={maxAmount}
         />
       </td>
       <td className="border px-4 py-2 text-right">${price}</td>

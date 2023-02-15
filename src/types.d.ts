@@ -15,16 +15,21 @@ interface StoreItem {
   productId: string;
   name: string;
   price: number;
-  maxAmountUnits: number;
-  currentAmount: number;
+  maxAmount: number;
+  available: number;
 }
 
 interface CartItem {
   productId: string;
   name: string;
   price: number;
-  maxAmountUnits: number;
-  votedAmount: number;
+  maxAmount: number;
+  voted: number;
+}
+
+interface ProductToRemove {
+  productId: string;
+  price: number;
 }
 
 interface initialState {
@@ -39,23 +44,23 @@ interface initialState {
 type ChangeAmountProps = {
   productId: string;
   name: string;
-  currentAmount: number;
+  available: number;
   price: number;
-  maxAmountUnits: number;
+  maxAmount: number;
 };
 
 type StoreItemProps = {
   name: string;
   productId: string;
   price;
-  maxAmountUnits: number;
-  amount: number;
+  maxAmount: number;
+  available: number;
 };
 
 type CartItemProps = {
   productId: string;
   name: string;
   price: number;
-  votedAmount: number;
-  maxAmountUnits: number;
+  voted: number;
+  maxAmount: number;
 }

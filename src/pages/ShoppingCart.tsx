@@ -41,12 +41,12 @@ function SolarModuleCart() {
         </div>
         <table className="mt-5 w-full overflow-y-scroll max-h-[300px]">
           <thead className="bg-green-200">
-            <tr className="text-slate">
-              <th className="py-2">Product Details</th>
-              <th className="py-2">Available</th>
-              <th className="py-2">Quantity</th>
-              <th className="py-2">Price</th>
-              <th className="py-2">Total</th>
+            <tr className="text-slate border">
+              <th className="py-2 border border-gray-200">Product Details</th>
+              <th className="py-2 border border-gray-200">Available</th>
+              <th className="py-2 border border-gray-200">Quantity</th>
+              <th className="py-2 border border-gray-200">Price</th>
+              <th className="py-2 border border-gray-200">Total</th>
             </tr>
           </thead>
           <tbody className="bg-gray-100">
@@ -57,8 +57,8 @@ function SolarModuleCart() {
                     productId={solarModule.productId}
                     name={solarModule.name}
                     price={solarModule.price}
-                    votedAmount={solarModule.votedAmount}
-                    maxAmountUnits={solarModule.maxAmountUnits}
+                    voted={solarModule.voted}
+                    maxAmount={solarModule.maxAmount}
                   />
                 ))
               : null}
@@ -71,7 +71,7 @@ function SolarModuleCart() {
         )}
       </div>
       <div className="w-2/6 bg-gray-200 p-20">
-        <div className=" font-bold uppercase text-xl text-center">
+        <div className="font-bold uppercase text-xl text-center">
           Order Summary
         </div>
         <div className="h-[2px] bg-slate-400 mt-10"></div>

@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 
 import { SolarModulesActionsCreator } from "../redux/actions/solarsAction";
@@ -9,36 +7,30 @@ import { useMemo } from "react";
 function ChangeAmount({
   productId,
   name,
-  currentAmount,
+  available,
   price,
-  maxAmountUnits,
+  maxAmount,
 }: ChangeAmountProps) {
-  const votedAmount = useMemo(() => maxAmountUnits - currentAmount, [currentAmount])
+  const voted = useMemo(() => maxAmount - available, [available, maxAmount])
 
   const onAddSolarModuleToCart = () => {
-    if (currentAmount > 0) {
+    if (available > 0) {
       dispatchStore(
         SolarModulesActionsCreator.addProductToCart({
           productId,
           name,
           price,
-          maxAmountUnits,
-          votedAmount: currentAmount,
+          maxAmount,
+          voted,
         })
       );
     }
   };
 
   const onRemoveSolarModuleFromCart = () => {
-    if (currentAmount < maxAmountUnits) {
+    if (available < maxAmount) {
       dispatchStore(
-        SolarModulesActionsCreator.removeProductFromCart({
-          productId,
-          name,
-          price,
-          maxAmountUnits,
-          votedAmount: currentAmount,
-        })
+        SolarModulesActionsCreator.removeProductFromCart({productId, price})
       );
     }
   };
@@ -53,7 +45,7 @@ function ChangeAmount({
         />
       </button>
       <div className="w-4">
-        {votedAmount}
+        {voted}
       </div>
       <button>
         <AiFillMinusCircle

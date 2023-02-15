@@ -41,7 +41,7 @@ export const SolarModulesActionsCreator = {
     payload: productToAdd,
   }),
 
-  removeProductFromCart: (productToRemove: CartItem) => ({
+  removeProductFromCart: (productToRemove: ProductToRemove) => ({
     type: REMOVE_SOLAR_MODULE_FROM_CART,
     payload: productToRemove,
   }),

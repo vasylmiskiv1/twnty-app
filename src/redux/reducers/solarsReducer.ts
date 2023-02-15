@@ -51,30 +51,30 @@ export default function postsReducer(
           ...state,
           cartCounter: state.cartCounter + 1,
           cartTotalPrice: state.cartTotalPrice + action.payload.price,
-          solarModuleStore: state.solarModuleStore.map((solarModule) =>
-            solarModule.productId === action.payload.productId
-              ? { ...solarModule, currentAmount: solarModule.currentAmount - 1 }
-              : solarModule
+          solarModuleStore: state.solarModuleStore.map((product: StoreItem) =>
+            product.productId === action.payload.productId
+              ? { ...product, available: product.available - 1 }
+              : product
           ),
           solarModuleCart: [
             ...state.solarModuleCart,
-            { ...action.payload, votedAmount: 1 },
+            { ...action.payload, voted: 1 },
           ],
         };
       }
-      
+
       return {
         ...state,
         cartCounter: state.cartCounter + 1,
         cartTotalPrice: state.cartTotalPrice + action.payload.price,
-        solarModuleStore: state.solarModuleStore.map((solarModule: StoreItem) =>
-          solarModule.productId === action.payload.productId
-            ? { ...solarModule, currentAmount: solarModule.currentAmount - 1 }
-            : solarModule
+        solarModuleStore: state.solarModuleStore.map((product: StoreItem) =>
+          product.productId === action.payload.productId
+            ? { ...product, available: product.available - 1 }
+            : product
         ),
         solarModuleCart: state.solarModuleCart.map((product: CartItem) =>
           product.productId === action.payload.productId
-            ? { ...product, votedAmount: product.votedAmount + 1 }
+            ? { ...product, voted: product.voted + 1 }
             : product
         ),
       };
@@ -84,18 +84,18 @@ export default function postsReducer(
         ...state,
         cartCounter: state.cartCounter - 1,
         cartTotalPrice: state.cartTotalPrice - action.payload.price,
-        solarModuleStore: state.solarModuleStore.map((solarModule) =>
-          solarModule.productId === action.payload.productId
-            ? { ...solarModule, currentAmount: solarModule.currentAmount + 1 }
-            : solarModule
+        solarModuleStore: state.solarModuleStore.map((product: StoreItem) =>
+          product.productId === action.payload.productId
+            ? { ...product, available: product.available + 1 }
+            : product
         ),
         solarModuleCart: state.solarModuleCart
-          .map((product) =>
+          .map((product: CartItem) =>
             product.productId === action.payload.productId
-              ? { ...product, votedAmount: product.votedAmount - 1 }
+              ? { ...product, voted: product.voted - 1 }
               : product
           )
-          .filter((product) => product.votedAmount),
+          .filter((product: CartItem) => product.voted),
       };
 
     case CLEAR_ALL_DATA:

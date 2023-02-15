@@ -1,11 +1,11 @@
 import ChangeAmount from "./ChangeAmount";
 
 function StoreItem({
-  name,
-  amount,
-  price,
   productId,
-  maxAmountUnits,
+  name,
+  available,
+  price,
+  maxAmount,
 }: StoreItemProps) {
   return (
     <div
@@ -15,14 +15,14 @@ function StoreItem({
     >
       <div className="text-2xl">{name}</div>
       <div className="flex flex-col justify-between">
-        <div className="text-center">Available: {amount}</div>
+        <div className="text-center">Available: {available}</div>
         <div>
           <ChangeAmount
             productId={productId}
             name={name}
             price={price}
-            currentAmount={amount}
-            maxAmountUnits={maxAmountUnits}
+            available={available}
+            maxAmount={maxAmount}
           />
           <div className="mt-5 flex items-center gap-5">
             Price: <span className="text-lg font-semibold">${price}</span>
